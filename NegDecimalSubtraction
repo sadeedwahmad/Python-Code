@@ -1,0 +1,77 @@
+from random import randint
+import random
+
+#From 1-20  = Simple Addition
+#From 20-50 = Two Digit Addition
+#From 50-60 = Three Digit Addition
+#From 60-70 = Four Digit Addition
+from datetime import datetime
+
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("Start Time =", current_time)
+
+#ADJUST THIS AND MAKE A PLAN 
+#Make Him do this 3 times
+#First Time do not raise difficulty after question 50
+#Second Time do not raise the difficulty after question 60
+#Thrid Time run the programme as designed
+
+correct_counter = 0
+wrong_counter = 0
+
+for m in range(80):
+    a = 0
+    b = 0
+   
+    if(m<=20):
+        a = random.uniform(0, 10)
+        b = random.uniform(0, 10)
+        a = round(a,1)
+        b = round(b,1)
+        real_answer = round(a-b,1)
+    elif(20<m<=50):
+        a = random.uniform(0, 10)
+        b = random.uniform(0, 10)
+        a = round(a,2)
+        b = round(b,2)
+        real_answer = round(a-b,2)
+    elif(50<m<=60):
+        a = random.uniform(0, 10)
+        b = random.uniform(0, 10)
+        a = round(a,3)
+        b = round(b,3)
+        real_answer = round(a-b,3)
+ 
+    print("Question number: " + str(m))
+    print("What is: "+ str(a) + " - " + str(b))
+    
+    
+    user_anwser = input("Enter Anwser: ")
+    if(str(user_anwser) == str(real_answer)):
+        print("Correct");
+        correct_counter +=1 
+    else:
+        print("Wrong!")
+        wrong_counter +=1
+        print("correct anwser: " + str(real_answer))
+        stuck = True
+        while(stuck):
+            print("What is: "+ str(a) + " - " + str(b))
+            user_anwser = input("Enter Anwser: ")
+            #if(int(user_anwser) == a+b):
+            if(str(user_anwser) == str(real_answer)):
+                print("Correct");
+                
+                stuck = False
+            else:
+                print("Wrong!")
+                print("correct anwser: " + str(real_answer))
+                wrong_counter +=1
+        
+     
+print("You got " + str(correct_counter) +" Correct!")
+print("You got " + str(wrong_counter) +" Wrong!")
+now = datetime.now()
+current_time = now.strftime("%H:%M:%S")
+print("End Time =", current_time)
