@@ -1,15 +1,23 @@
 from random import randint
 
-
+from ResultWriter import writeToResultsFile
 #From 1-20  = Simple Addition
 #From 20-50 = Two Digit Addition
 #From 50-60 = Three Digit Addition
 #From 60-70 = Four Digit Addition
 from datetime import datetime
+from datetime import date
+
+today = date.today()
+# Textual month, day and year	
+todayDate = "Date: " +  today.strftime("%B %d, %Y")
+print(todayDate)
+
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("Start Time =", current_time)
+startTimeStr = "Start Time ="+ str(current_time)
+print(startTimeStr)
 
 #ADJUST THIS AND MAKE A PLAN 
 #Make Him do this 3 times
@@ -37,30 +45,36 @@ for m in range(80):
         b = randint(1000, 3000)
     print("Question number: " + str(m))
     print("What is: "+ str(a) + " + " + str(b))
-    user_anwser = input("Enter Anwser: ")
-    if(str(user_anwser) == str(a+b)):
-        print("Correct");
+    user_answer = input("Enter answer: ")
+    if(str(user_answer) == str(a+b)):
+        print("\033[1;32m Correct!  \n")
         correct_counter +=1 
     else:
-        print("Wrong!")
+        print("\033[1;31;40m Wrong!  \n")
         wrong_counter +=1
         stuck = True
         while(stuck):
             print("What is: "+ str(a) + " + " + str(b))
-            user_anwser = input("Enter Anwser: ")
-            if(str(user_anwser) == str(a+b)):
-                print("Correct");
+            user_answer = input("Enter answer: ")
+            if(str(user_answer) == str(a+b)):
+                print("\033[1;32m Correct!  \n")
                 
                 stuck = False
             else:
-                print("Wrong!")
+                print("\033[1;31;40m Wrong!  \n")
                 wrong_counter +=1
         
-     
-print("You got " + str(correct_counter) +" Correct!")
-print("You got " + str(wrong_counter) +" Wrong!")
+correctStr = "You got " + str(correct_counter) +" Correct!"
+wrongStr = "You got " + str(wrong_counter) +" Wrong!"
+print(correctStr)
+print(wrongStr)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("End Time =", current_time)
+EndTimeStr = "End Time: "+ str(current_time)
+print(EndTimeStr)
 
 
+
+
+
+writeToResultsFile("Test is: Addition",todayDate,startTimeStr, correctStr, wrongStr, EndTimeStr)

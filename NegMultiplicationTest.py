@@ -1,17 +1,23 @@
+
 from random import randint
 
 
-#From 1-30  = Simple Mutliplication
-#From 30-60 = Two Digit Mutliplication
-#From 60-80 = Three Digit Mutliplication
+#From 1-40  = Simple Fraciton Addition
+
 from datetime import datetime
+from ResultWriter import writeToResultsFile
+from datetime import date
+
+today = date.today()
+# Textual month, day and year	
+todayDate = "Date: " +  today.strftime("%B %d, %Y")
+print(todayDate)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("Start Time =", current_time)
+startTimeStr = "Start Time ="+ str(current_time)
+print(startTimeStr)
 
-
-#ADJUST THIS AND MAKE A PLAN 
 
 correct_counter = 0
 wrong_counter = 0
@@ -68,10 +74,13 @@ for m in range(75):
 
 
     
-
-print("You got " + str(correct_counter) +" Correct!")
-print("You got " + str(wrong_counter) +" Wrong!")
+correctStr = "You got " + str(correct_counter) +" Correct!"
+wrongStr = "You got " + str(wrong_counter) +" Wrong!"
+print(correctStr)
+print(wrongStr)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("End Time =", current_time)
+EndTimeStr = "End Time: "+ str(current_time)
+print(EndTimeStr)
 
+writeToResultsFile("Test is: NegativeMultiplication",todayDate,startTimeStr, correctStr, wrongStr, EndTimeStr)

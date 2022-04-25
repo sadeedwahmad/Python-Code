@@ -1,25 +1,29 @@
 
 from random import randint
-
+from fractions import Fraction
 
 #From 1-40  = Simple Fraciton Addition
 
 from datetime import datetime
+from ResultWriter import writeToResultsFile
+from datetime import date
+
+today = date.today()
+# Textual month, day and year	
+todayDate = "Date: " +  today.strftime("%B %d, %Y")
+print(todayDate)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("Start Time =", current_time)
-
-#ADJUST THIS AND MAKE A PLAN 
+startTimeStr = "Start Time ="+ str(current_time)
+print(startTimeStr)
 
 
 correct_counter = 0
 wrong_counter = 0
-print("Example: Question 1/2 divided by 3/4  = 1/2 * 4/3 - 1*4/3*2 = 4/6")
-print("a/b Divided by c/d  = (a*d)/(b*c)")
-print("You do NOT need to simplify // You do NOT need to simplify ")
+
 for m in range(40):
-    ##Anwser = a/b + c/d
+    ##answer = a/b + c/d
     a = randint(-10, 10) #numerator
     c = randint(-10, 10) #numerator
     b = randint(1, 10) #denomenator
@@ -29,30 +33,35 @@ for m in range(40):
     print("Question number: " + str(m))
     print("What is: "+ str(a) + "/" + str(b) + " Divided by " + str(c)  + "/" + str(d))
   
-    user_anwser = input("Enter Anwser: ")
-    real_anwser = str(a*d) + "/" + str(b*c) 
-    if(user_anwser == real_anwser):
-        print("Correct");
+    user_answer = input("Enter answer: ")
+    real_answer = Fraction(a,b)/Fraction(c,d)
+    if(str(user_answer) == str(real_answer)):
+        print("\033[1;32m Correct!  \n")
         correct_counter +=1 
     else:
-        print("Wrong!")
-       # print("CorrectAnwser: " + str(real_anwser))
+        print("\033[1;31;40m Wrong!  \n")
+       # print("Correctanswer: " + str(real_answer))
         wrong_counter +=1
         stuck = True
         while(stuck):
             print("What is: "+ str(a) + "/" + str(b) + " Divided by " + str(c)  + "/" + str(d))
-            user_anwser = input("Enter Anwser: ")
-            if(user_anwser == real_anwser):
-                print("Correct");
+            user_answer = input("Enter answer: ")
+            if(str(user_answer) == str(real_answer)):
+                print("\033[1;32m Correct!  \n")
                 stuck = False
             else:
-                print("Wrong!")
-                #print("CorrectAnwser: " + str(real_anwser))
+                print("\033[1;31;40m Wrong!  \n")
+                #print("Correctanswer: " + str(real_answer))
                 wrong_counter +=1
 
      
-print("You got " + str(correct_counter) +" Correct!")
-print("You got " + str(wrong_counter) +" Wrong!")
+correctStr = "You got " + str(correct_counter) +" Correct!"
+wrongStr = "You got " + str(wrong_counter) +" Wrong!"
+print(correctStr)
+print(wrongStr)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("End Time =", current_time)
+EndTimeStr = "End Time: "+ str(current_time)
+print(EndTimeStr)
+
+writeToResultsFile("Test is: Fraction_NegativeDivision",todayDate,startTimeStr, correctStr, wrongStr, EndTimeStr)

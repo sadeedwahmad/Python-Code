@@ -20,7 +20,7 @@ print("Start Time =", current_time)
 correct_counter = 0
 wrong_counter = 0
 
-for m in range(50,90):
+for m in range(81,90):
     a = 0
     b = 0
     if(m<=20):
@@ -40,8 +40,8 @@ for m in range(50,90):
         b = randint(1000, 3000)
     print("Question number: " + str(m))
     print("What is: "+ str(a) + " - " + str(b))
-    user_anwser = input("Enter Anwser: ")
-    if(int(user_anwser) == a-b):
+    user_answer = input("Enter answer: ")
+    if(int(user_answer) == a-b):
         print("Correct");
         correct_counter +=1 
     else:
@@ -50,8 +50,8 @@ for m in range(50,90):
         stuck = True
         while(stuck):
             print("What is: "+ str(a) + " - " + str(b))
-            user_anwser = input("Enter Anwser: ")
-            if(int(user_anwser) == a-b):
+            user_answer = input("Enter answer: ")
+            if(int(user_answer) == a-b):
                 print("Correct");
                
                 stuck = False

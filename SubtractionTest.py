@@ -1,15 +1,25 @@
 from random import randint
 
 
-#From 1-20  = Simple Addition
+#From 186
+# 20  = Simple Addition
 #From 20-50 = Two Digit Addition
 #From 50-60 = Three Digit Addition
 #From 60-70 = Four Digit Addition
 from datetime import datetime
+from ResultWriter import writeToResultsFile
+from datetime import date
+
+today = date.today()
+# Textual month, day and year	
+todayDate = "Date: " +  today.strftime("%B %d, %Y")
+print(todayDate)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("Start Time =", current_time)
+startTimeStr = "Start Time ="+ str(current_time)
+print(startTimeStr)
+
 
 #ADJUST THIS AND MAKE A PLAN 
 #Make Him do this 3 times
@@ -38,7 +48,7 @@ for m in range(80):
     print("Question number: " + str(m))
     print("What is: "+ str(a) + " - " + str(b))
     user_anwser = input("Enter Anwser: ")
-    if(int(user_anwser) == a-b):
+    if(str(user_anwser) == str(a-b)):
         print("Correct");
         correct_counter +=1 
     else:
@@ -48,7 +58,7 @@ for m in range(80):
         while(stuck):
             print("What is: "+ str(a) + " - " + str(b))
             user_anwser = input("Enter Anwser: ")
-            if(int(user_anwser) == a-b):
+            if(str(user_anwser) == str(a-b)):
                 print("Correct");
                 
                 stuck = False
@@ -57,8 +67,14 @@ for m in range(80):
                 wrong_counter +=1
         
      
-print("You got " + str(correct_counter) +" Correct!")
-print("You got " + str(wrong_counter) +" Wrong!")
+correctStr = "You got " + str(correct_counter) +" Correct!"
+wrongStr = "You got " + str(wrong_counter) +" Wrong!"
+print(correctStr)
+print(wrongStr)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("End Time =", current_time)
+EndTimeStr = "End Time: "+ str(current_time)
+print(EndTimeStr)
+
+
+writeToResultsFile("Test is: Subtraction",todayDate,startTimeStr, correctStr, wrongStr, EndTimeStr)

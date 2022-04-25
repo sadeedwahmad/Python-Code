@@ -1,10 +1,22 @@
+
 from random import randint
+
+
+#From 1-40  = Simple Fraciton Addition
+
 from datetime import datetime
+from ResultWriter import writeToResultsFile
+from datetime import date
+
+today = date.today()
+# Textual month, day and year	
+todayDate = "Date: " +  today.strftime("%B %d, %Y")
+print(todayDate)
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("Start Time =", current_time)
-
+startTimeStr = "Start Time ="+ str(current_time)
+print(startTimeStr)
 
 
 correct_counter = 0
@@ -73,8 +85,13 @@ for m in range(70):
 
     
 
-print("You got " + str(correct_counter) +" Correct!")
-print("You got " + str(wrong_counter) +" Wrong!")
+correctStr = "You got " + str(correct_counter) +" Correct!"
+wrongStr = "You got " + str(wrong_counter) +" Wrong!"
+print(correctStr)
+print(wrongStr)
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
-print("End Time =", current_time)
+EndTimeStr = "End Time: "+ str(current_time)
+print(EndTimeStr)
+
+writeToResultsFile("Test is: NegativeDivision",todayDate,startTimeStr, correctStr, wrongStr, EndTimeStr)
