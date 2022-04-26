@@ -42,7 +42,7 @@ for m in range(20,80):
  
     print("Question number: " + str(m))
     print("What is: "+ str(a) + " + " + str(b))
-    real_answer = a+b
+    real_answer = float(a+b)
     user_anwser = input("Enter Anwser: ")
     if(str(user_anwser) == str(real_answer)):
         print("Correct");
