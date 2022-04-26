@@ -30,33 +30,26 @@ for m in range(70):
     a = 0
     b = 0
     c = randint(0, 1)
+    d = randint(0, 1)
     if(m<=20):
         a = randint(0, 10)
-        if(c==1):
-            b=randint(-10,-1)
-        else:
-            b = randint(1, 10)
+        b = randint(1, 10)
+        
     
     elif(20<m<=40):
         a = randint(10, 50)
-        if(c==1):
-            b= randint(-15,-1) 
-        else:
-            b = randint(1, 15)
+        b = randint(1, 15)
     elif(40<m<=60):
         a = randint(100, 700)
-        if(c==1):
-            b=randint(-20,-1)
-        else:
-            b = randint(1, 20)
+        b = randint(1, 20)
         
     elif(60<m<=70):
         a = randint(150, 1000)
-        if(c==1):
-            b=randint(-50,-10)
-        else:
-            b = randint(10, 50)
-
+        b = randint(10, 50)
+    if(c==1):
+        a=-a
+    if(d==1):
+        b=-b
     c = a*b
     print("Question number: " + str(m))
     print("What is: "+ str(c) + "/" + str(b))
